@@ -1,0 +1,29 @@
+<!---display artist profile-->
+<div *ngIf="artist">
+  <header class="artist-header">
+    <div *ngIf="artist.images.length > 0">
+      <img class="artist-thumb img-circle" src="{{artist.images[0].url}}">
+    </div>
+    <h2>{{artist.name}}</h2><br>
+    <h6 class="data">Followers: {{ artist.followers.total }}</h6>
+    <h6 class="data">Genres: {{ artist.genres.join(", ") }}</h6>
+    <h6 class="data">Popularity: {{ artist["popularity"] }}</h6> 
+  </header>
+
+  <!---listkan senarai album dalam column-->
+<h5>Album List</h5>
+  <div class="artist-albums">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let album of albums">
+        <div class="well album">
+          <div *ngIf="album.images.length > 0">
+            <img class="album-thumb img-thumbnail" src="{{album.images[0].url}}">
+            <hr>
+            <h6>{{album.name}}</h6>
+            <a class="btn btn-default btn-block" routerLink="/album/{{album.id}}">Album Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
